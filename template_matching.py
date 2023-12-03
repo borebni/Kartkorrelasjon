@@ -1,12 +1,10 @@
-#Importing necessary libraries
 import os 
-import glob
 import cv2 as cv
 import numpy as np  
 import datetime
 import time
 from matplotlib import pyplot as plt
-#importerer funksjoner fra rotate.py
+#importing functions from rotate.py
 from rotate import change_angle_to_radius_unit, rotate
 
 #Finding and reading map image. Insert path to file 
@@ -84,7 +82,7 @@ cv.rectangle(img_show, top_left, bottom_right, 255, 2)
 #Plotting result
 plt.subplot(121), plt.imshow(templ_show)
 plt.subplot(121), plt.imshow(img_scaled)
-plt.title(f"Internal map" ), plt.xticks([]), plt.yticks([]) 
+plt.title(f"Local map" ), plt.xticks([]), plt.yticks([]) 
 plt.subplot(122), plt.imshow(img_show)
 plt.scatter(rover_position[0], rover_position[1], color="red")
 plt.title('Global map'), plt.xticks([]), plt.yticks([])
