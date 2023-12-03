@@ -7,7 +7,7 @@
   <arg name="pub_map_odom_transform" default="true"/>
   <arg name="scan_subscriber_queue_size" default="1"/>
   <arg name="scan_topic" default="scan"/>
-  <!-- endret 100 til 1000 /RM261023 -->
+  <!-- endret map_size fra 100 til 400. Kartet i Rviz blir da 400x400 piklser /RM261023 -->
   <arg name="map_size" default="400"/>
   
   <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
