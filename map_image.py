@@ -7,9 +7,7 @@ import numpy as np
 from PIL import Image
 import os
 import datetime
-#Defining variable used for stopping the callback function
-#callback_img = False#############33
-#Creating new directory for internal map
+#Creating new directory for local map
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 #Insert pathname below
 save_folder = "pathname{}".format(timestamp)
@@ -22,23 +20,21 @@ def occupancy_grid_callback(msg):
     global timestamp
     global save_folder
 
-    #callback_img = True
+   
     #Converting the occupancy grid to array
     occupancy_data = np.array(msg.data).reshape((msg.info.height, msg.info.width))
     #Converting the array to an image
     occupancy_image = (255 * (1 - (occupancy_data / 100))).astype(np.uint8)
     occupancy_image = Image.fromarray(occupancy_image) 
 
-    #Saving the internal map
+    #Saving the local map
     image_filename = os.path.join(save_folder, "map_screenshot_{}.png".format(timestamp))
     occupancy_image.save(image_filename)
     rospy.loginfo("Saved map screenshot as %s", image_filename)
     
-    
-    #if callback_img
     #Shutting down the ROS node
     rospy.signal_shutdown("The functions has been executed")
-    #sys.exit(0)
+    sys.exit(0)
 
 
 
